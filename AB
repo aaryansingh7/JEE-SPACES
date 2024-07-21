@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Preparation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .half-black-yellow {
+            background: linear-gradient(to right, black 50%, yellow 50%);
+        }
+        .countdown {
+            color: white;
+            font-size: 2em;
+        }
+        .circle-btn {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: violet;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+</head>
+<body class="half-black-yellow h-screen flex flex-col items-center justify-center">
+    <div class="text-center">
+        <h1 class="text-4xl text-white">JEE Exam Countdown</h1>
+        <div class="countdown" id="countdown"></div>
+        <a href="jee-space.html" class="mt-10 inline-block bg-white text-black py-2 px-4 rounded">Go to JEE SPACE</a>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function countdown() {
+            const examDate = new Date("Dec 31, 2024 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = examDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "EXAM TIME!";
+            }
+        }
+
+        setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
+
